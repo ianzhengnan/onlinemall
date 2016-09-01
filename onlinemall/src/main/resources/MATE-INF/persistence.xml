@@ -4,11 +4,14 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
 	http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 	
-	<persistence-unit name="onlinmall" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="onlinemall" transaction-type="RESOURCE_LOCAL">
 	
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>com.ian.onlinemall.domain.User</class>
 		<class>com.ian.onlinemall.domain.Address</class>
+		<class>com.ian.onlinemall.domain.Order</class>
+		<class>com.ian.onlinemall.domain.Cart</class>
+		<class>com.ian.onlinemall.domain.Goods</class>
 		<properties>
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/onlinemall"/>

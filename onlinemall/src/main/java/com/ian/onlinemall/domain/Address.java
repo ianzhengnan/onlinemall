@@ -1,29 +1,23 @@
 package com.ian.onlinemall.domain;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 
 @Entity
-@Table(name="Address")
-public class Address implements Serializable{
+@Table(name="ADDRESS")
+public class Address extends BaseObject implements Serializable{
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 48L;
+	private static final long serialVersionUID = 1L;
 
-	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
@@ -35,12 +29,6 @@ public class Address implements Serializable{
 	private String region;
 	private String zipcode;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date createAt;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date lastChangedAt;
-
 	public Address(){
 		
 	}
@@ -93,21 +81,4 @@ public class Address implements Serializable{
 		this.zipcode = zipcode;
 	}
 
-	public Date getCreateAt() {
-		return createAt;
-	}
-
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
-	}
-
-	public Date getLastChangedAt() {
-		return lastChangedAt;
-	}
-
-	public void setLastChangedAt(Date lastChangedAt) {
-		this.lastChangedAt = lastChangedAt;
-	}
-
-	
 }
