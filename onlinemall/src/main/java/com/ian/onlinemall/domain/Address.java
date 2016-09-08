@@ -28,6 +28,7 @@ public class Address extends BaseObject implements Serializable{
 	private String province;
 	private String region;
 	private String zipcode;
+	private boolean isDefault;
 	
 	public Address(){
 		
@@ -79,6 +80,14 @@ public class Address extends BaseObject implements Serializable{
 
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
+	}
+
+	public boolean isDefault() {
+		return isDefault;
+	}
+
+	public void setDefault(boolean isDefault) {
+		this.isDefault = isDefault;
 	}
 
 }

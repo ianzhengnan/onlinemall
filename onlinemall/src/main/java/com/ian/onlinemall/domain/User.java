@@ -6,6 +6,8 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -19,13 +21,17 @@ public class User extends BaseObject implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Column(name="ACCOUNT_ID", length=50)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String accountId;
+	
 	private String password;
 	private String name;
 	private String sex;
 	private Integer age;
 	private String tel;
+	private String email;
 	private String role;
+	private Cart cart;
 	
 	@OneToMany(mappedBy="user", targetEntity=Address.class)
 	private Set<Address> addresses = new HashSet<Address>();
@@ -97,6 +103,22 @@ public class User extends BaseObject implements Serializable{
 
 	public void setAddresses(Set<Address> addresses) {
 		this.addresses = addresses;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
 	}
 	
 

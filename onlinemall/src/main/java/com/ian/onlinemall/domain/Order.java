@@ -32,6 +32,8 @@ public class Order extends BaseObject implements Serializable{
 	
 	@Column(nullable=false)
 	private Integer quantity;
+	
+	private String paymentMethod;
 
 	public Order(){
 		
@@ -75,6 +77,14 @@ public class Order extends BaseObject implements Serializable{
 
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
+	}
+
+	public String getPaymentMethod() {
+		return paymentMethod;
+	}
+
+	public void setPaymentMethod(String paymentMethod) {
+		this.paymentMethod = paymentMethod;
 	}
 	
 }
