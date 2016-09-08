@@ -21,7 +21,11 @@ public class Goods extends BaseObject implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String number;
 	
+	private String name;
+	
 	private String category;
+	
+	private String brand;
 
 	private String description;
 	
@@ -90,6 +94,22 @@ public class Goods extends BaseObject implements Serializable{
 
 	public void setStock(Integer stock) {
 		this.stock = stock;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
 	}
 	
 	

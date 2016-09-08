@@ -20,7 +20,7 @@ public class User extends BaseObject implements Serializable{
 	
 	@Column(name="ACCOUNT_ID", length=50)
 	private String accountId;
-	
+	private String password;
 	private String name;
 	private String sex;
 	private Integer age;
@@ -40,6 +40,14 @@ public class User extends BaseObject implements Serializable{
 
 	public void setAccountId(String accountId) {
 		this.accountId = accountId;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getName() {
