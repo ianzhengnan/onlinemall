@@ -5,6 +5,7 @@ import java.util.List;
 import com.ian.onlinemall.dao.BaseDao;
 import com.ian.onlinemall.dao.CartDao;
 import com.ian.onlinemall.domain.Cart;
+import com.ian.onlinemall.domain.Goods;
 import com.ian.onlinemall.domain.User;
 
 public class CartDaoImpl extends BaseDao implements CartDao{
@@ -20,4 +21,19 @@ public class CartDaoImpl extends BaseDao implements CartDao{
 		return null;
 	}
 
+	public void addGoodsToCart(Goods goods, Cart cart) {
+		cart.getGoods().add(goods);
+		update(cart);
+	}
+
+	public void removeGoodsFromCart(Goods goods, Cart cart) {
+		cart.getGoods().remove(goods);
+		update(cart);
+	}
+
+	public void cleanCart(Cart cart) {
+		cart.getGoods().clear();
+		update(cart);
+	}
+	
 }

@@ -4,14 +4,24 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 
 public class BaseDao implements Dao{
 
+	private EntityManagerFactory emf;
+	
 	@PersistenceContext
 	private EntityManager em;
+	
+	public void setEmf(EntityManagerFactory emf){
+		this.emf = emf;
+		if (em == null) {
+			em = this.emf.createEntityManager();
+		}
+	}
 
 	public <T> T get(Class<T> entityClass, Object pk) {
 

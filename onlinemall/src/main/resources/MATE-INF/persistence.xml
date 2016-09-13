@@ -6,17 +6,17 @@
 	
 	<persistence-unit name="onlinemall" transaction-type="RESOURCE_LOCAL">
 	
-		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<!-- <provider>org.hibernate.ejb.HibernatePersistence</provider> -->
 		<class>com.ian.onlinemall.domain.User</class>
 		<class>com.ian.onlinemall.domain.Address</class>
 		<class>com.ian.onlinemall.domain.Order</class>
 		<class>com.ian.onlinemall.domain.Cart</class>
 		<class>com.ian.onlinemall.domain.Goods</class>
 		<properties>
-			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+			<!-- <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/onlinemall"/>
 			<property name="hibernate.connection.username" value="root"/>
-			<property name="hibernate.connection.password" value="1234567"/>
+			<property name="hibernate.connection.password" value="1234567"/> -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true"/>

@@ -1,7 +1,10 @@
 package com.ian.onlinemall.service;
 
 
+import java.util.Set;
+
 import com.ian.onlinemall.domain.Address;
+import com.ian.onlinemall.domain.Cart;
 import com.ian.onlinemall.domain.Goods;
 import com.ian.onlinemall.domain.Order;
 import com.ian.onlinemall.domain.User;
@@ -55,10 +58,11 @@ public interface UserManager {
 	/**
 	 * 添加商品到购物车
 	 * @param goods
+	 * @param cart 
 	 * @return 是否成功
 	 * @throws OmException
 	 */
-	boolean addGoodsToCart(Goods goods) throws OmException;
+	Set<Goods> addGoodsToCart(Goods goods, Cart cart) throws OmException;
 	
 	/**
 	 * 从购物车删除商品
@@ -66,14 +70,15 @@ public interface UserManager {
 	 * @return 是否成功
 	 * @throws OmException
 	 */
-	boolean removeGoodsFromCart(Goods goods) throws OmException;
+	Set<Goods> removeGoodsFromCart(Goods goods, Cart cart) throws OmException;
 	
 	/**
 	 * 清空购物车
+	 * @param cart
 	 * @return 是否成功
 	 * @throws OmException
 	 */
-	boolean cleanCart() throws OmException;
+	boolean cleanCart(Cart cart) throws OmException;
 	
 	/**
 	 * 新增地址
@@ -86,18 +91,16 @@ public interface UserManager {
 	/**
 	 * 删除地址
 	 * @param address
-	 * @return
 	 * @throws OmException
 	 */
-	boolean deleteAddress(Address address) throws OmException;
+	void deleteAddress(Address address) throws OmException;
 	
 	/**
 	 * 设置默认地址
 	 * @param address
-	 * @return
 	 * @throws OmException
 	 */
-	boolean setDefaultAddress(Address address) throws OmException;
+	void setDefaultAddress(Address address) throws OmException;
 	
 	
 }

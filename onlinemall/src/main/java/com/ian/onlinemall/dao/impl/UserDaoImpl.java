@@ -19,4 +19,30 @@ public class UserDaoImpl extends BaseDao implements UserDao{
 		}
 		return null;
 	}
+
+	public User findUserByEmailAndPass(String email, String password) {
+		
+		List<User> userList = getResultList(User.class
+				, "where o.email = ?1 and o.password = ?2"
+				, null
+				, email, password);
+		if (userList != null && userList.size() > 0) {
+			return userList.get(0);
+		}
+		return null;
+	}
+
+	public User findUserByTelAndPass(String tel, String password) {
+		
+		List<User> userList = getResultList(User.class
+				, "where o.tel = ?1 and o.password = ?2"
+				, null
+				, tel, password);
+		if (userList != null && userList.size() > 0) {
+			return userList.get(0);
+		}
+		return null;
+	}
+	
+	
 }
