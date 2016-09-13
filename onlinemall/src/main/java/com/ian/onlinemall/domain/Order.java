@@ -1,16 +1,21 @@
 package com.ian.onlinemall.domain;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ORDER")
+@Table(name="ORDER_TABLE")
 public class Order extends BaseObject implements Serializable{
 
 	/**
@@ -21,13 +26,16 @@ public class Order extends BaseObject implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String number;
 	
-	@Column(nullable=false)
+	@ManyToOne(targetEntity=User.class)
+	@JoinColumn(name="user_uuid", nullable=false, updatable=false)
 	private User user;
 	
-	@Column(nullable=false)
-	private Set<Goods> goods;
+	@OneToMany(targetEntity=Goods.class)
+	@JoinColumn(name="goods_id", nullable=true)
+	private Set<Goods> goods = new HashSet<Goods>();
 	
-	@Column(nullable=false)
+	@OneToOne(targetEntity=Address.class)
+	@JoinColumn(name="address_uuid", nullable=false, updatable=true)
 	private Address address;
 	
 	@Column(nullable=false)

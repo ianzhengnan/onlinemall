@@ -1,11 +1,15 @@
 package com.ian.onlinemall.domain;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,9 +24,13 @@ public class Cart extends BaseObject implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
+	@ManyToOne(targetEntity=User.class)
+	@JoinColumn(name="user_uuid", nullable=false, updatable=false)
 	private User user;
 	
-	private Set<Goods> goods;
+	@OneToMany(targetEntity=Goods.class)
+	@JoinColumn(name="goods_id", nullable=true)
+	private Set<Goods> goods = new HashSet<Goods>();
 	
 	private Integer quantity;
 	

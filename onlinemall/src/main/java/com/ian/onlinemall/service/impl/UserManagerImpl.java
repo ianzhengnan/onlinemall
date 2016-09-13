@@ -37,7 +37,6 @@ public class UserManagerImpl implements UserManager{
 		this.addressDao = addressDao;
 	}
 
-	
 	public boolean signUp(User user) throws OmException {
 		
 		userDao.save(user);
