@@ -8,7 +8,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-
 public class BaseDao implements Dao{
 
 	private EntityManagerFactory emf;
@@ -28,13 +27,18 @@ public class BaseDao implements Dao{
 		T obj = em.find(entityClass, pk);
 		return obj;
 	}
+	
 
-	public void save(Object entity) {
+	public void save(Object entity){
 
-		em.persist(entity);
+		try{
+			em.persist(entity);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 
-	public void update(Object entity) {
+	public void update(Object entity){
 
 		em.merge(entity);
 	}
@@ -91,4 +95,5 @@ public class BaseDao implements Dao{
 		}
 		return out.toString();
 	}
+
 }

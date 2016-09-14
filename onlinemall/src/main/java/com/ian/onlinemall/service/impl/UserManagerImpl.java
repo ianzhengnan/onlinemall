@@ -2,6 +2,8 @@ package com.ian.onlinemall.service.impl;
 
 import java.util.Set;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.ian.onlinemall.dao.AddressDao;
 import com.ian.onlinemall.dao.CartDao;
 import com.ian.onlinemall.dao.OrderDao;
@@ -14,6 +16,7 @@ import com.ian.onlinemall.domain.User;
 import com.ian.onlinemall.exception.OmException;
 import com.ian.onlinemall.service.UserManager;
 
+@Transactional
 public class UserManagerImpl implements UserManager{
 
 	private UserDao userDao;
@@ -70,6 +73,7 @@ public class UserManagerImpl implements UserManager{
 		return null;
 	}
 
+	
 	public Set<Goods> addGoodsToCart(Goods goods, Cart cart) throws OmException {
 
 		cartDao.addGoodsToCart(goods, cart);
@@ -105,6 +109,15 @@ public class UserManagerImpl implements UserManager{
 	public void setDefaultAddress(Address address) throws OmException {
 		address.setDefault(true);
 		addressDao.update(address);
+	}
+	
+	public String createUser(User user) throws OmException {
+		
+		userDao.save(user);
+		if (user.getUuid().length() > 0) {
+			return user.getUuid();
+		}
+		return null;
 	}
 
 	

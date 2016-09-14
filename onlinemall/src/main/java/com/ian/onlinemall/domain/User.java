@@ -31,7 +31,6 @@ public class User extends BaseObject implements Serializable{
 	private String tel;
 	private String email;
 	private String role;
-	private Cart cart;
 	
 	@OneToMany(mappedBy="user", targetEntity=Address.class)
 	private Set<Address> addresses = new HashSet<Address>();
@@ -113,13 +112,5 @@ public class User extends BaseObject implements Serializable{
 		this.email = email;
 	}
 
-	public Cart getCart() {
-		return cart;
-	}
-
-	public void setCart(Cart cart) {
-		this.cart = cart;
-	}
-	
 
 }

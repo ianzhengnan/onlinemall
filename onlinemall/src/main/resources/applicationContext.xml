@@ -43,16 +43,19 @@
 		<property name="entityManagerFactory" ref="emf"/>
 	</bean>
 	
-	<!-- <tx:annotation-driven transaction-manager="transManager" /> -->
+	
+	<tx:annotation-driven transaction-manager="transManager" />
+	
+	<!-- <aop:config>
+		<aop:pointcut id="omPointCut" expression="bean(userMgr)"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="omPointCut"/>
+	</aop:config>
+	
 	<tx:advice id="txAdvice" transaction-manager="transManager">
 		<tx:attributes>
 			<tx:method name="get*" read-only="true"/>
 			<tx:method name="*"/>
 		</tx:attributes>
-	</tx:advice>
-	<aop:config>
-		<aop:pointcut id="omPointCut" expression="bean(userMgr)"/>
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="omPointCut"/>
-	</aop:config>
+	</tx:advice> -->
 	
 </beans>

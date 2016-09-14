@@ -48,6 +48,14 @@ public interface UserManager {
 	User signInByTel(String tel, String password) throws OmException;
 	
 	/**
+	 * 创建用户
+	 * @param user
+	 * @return 创建好的用户的UUID
+	 * @throws OmException
+	 */
+	String createUser(User user) throws OmException;
+	
+	/**
 	 * 创建订单
 	 * @param order
 	 * @return 订单编号

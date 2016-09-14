@@ -25,9 +25,12 @@ public class Address extends BaseObject implements Serializable{
 	private User user;
 	
 	private String country;
+	private String city;
 	private String province;
 	private String region;
+	private String detail;
 	private String zipcode;
+	
 	private boolean isDefault;
 	
 	public Address(){
@@ -88,6 +91,22 @@ public class Address extends BaseObject implements Serializable{
 
 	public void setDefault(boolean isDefault) {
 		this.isDefault = isDefault;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getDetail() {
+		return detail;
+	}
+
+	public void setDetail(String detail) {
+		this.detail = detail;
 	}
 
 }

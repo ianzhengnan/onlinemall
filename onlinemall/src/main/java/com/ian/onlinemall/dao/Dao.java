@@ -3,6 +3,8 @@ package com.ian.onlinemall.dao;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import com.ian.onlinemall.exception.OmException;
+
 public interface Dao {
 
 	/**
@@ -18,7 +20,7 @@ public interface Dao {
 	 * 保存实体
 	 * @param entity 需要保存的实体
 	 */
-	void save(Object entity);
+	void save(Object entity) throws OmException;
 	
 	/**
 	 * 更新实体
