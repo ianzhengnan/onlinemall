@@ -1,7 +1,7 @@
 package com.ian.onlinemall.service;
 
-
 import java.util.Set;
+
 
 import com.ian.onlinemall.domain.Address;
 import com.ian.onlinemall.domain.Cart;
@@ -46,14 +46,6 @@ public interface UserManager {
 	 * @throws OmException
 	 */
 	User signInByTel(String tel, String password) throws OmException;
-	
-	/**
-	 * 创建用户
-	 * @param user
-	 * @return 创建好的用户的UUID
-	 * @throws OmException
-	 */
-	String createUser(User user) throws OmException;
 	
 	/**
 	 * 创建订单

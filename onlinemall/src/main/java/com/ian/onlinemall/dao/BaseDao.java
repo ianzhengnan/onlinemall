@@ -21,6 +21,10 @@ public class BaseDao implements Dao{
 			em = this.emf.createEntityManager();
 		}
 	}
+	
+	public EntityManagerFactory geEntityManagerFactory(){
+		return this.emf;
+	}
 
 	public <T> T get(Class<T> entityClass, Object pk) {
 
@@ -28,11 +32,12 @@ public class BaseDao implements Dao{
 		return obj;
 	}
 	
-
 	public void save(Object entity){
 
 		try{
+//			em.getTransaction().begin();
 			em.persist(entity);
+//			em.getTransaction().commit();
 		}catch(Exception e){
 			e.printStackTrace();
 		}

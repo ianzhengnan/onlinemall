@@ -1,5 +1,8 @@
 package com.ian.onlinemall.test;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.ian.onlinemall.domain.Address;
 import com.ian.onlinemall.domain.User;
 import com.ian.onlinemall.exception.OmException;
@@ -19,12 +22,20 @@ public class InsertData extends ActionSupport{
 	private User user;
 	private Address ad1;
 	
+	private Logger logger;
+	
 	@Override
 	public String execute() throws OmException{
 		
-		insertUser("李四2", "lisi");
+		logger = LoggerFactory.getLogger(InsertData.class);
 		
-		User userTmp = userMgr.signInByName("李四2", "lisi");
+		insertUser("王五2", "wangwu");
+		
+		User userTmp = userMgr.signInByName("王五2", "wangwu");
+
+		logger.debug("debug message: " + userTmp );
+		logger.info("info message: " + userTmp );
+		logger.error("info message: " + userTmp );
 		
 		if (userTmp != null) {
 			setTip(userTmp.getName() + " 插入成功！");
@@ -57,8 +68,8 @@ public class InsertData extends ActionSupport{
 		user.setRole("cust");
 		
 		try {
-			userMgr.createUser(user);
-		} catch (OmException e1) {
+			userMgr.signUp(user);
+		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
 		
@@ -66,7 +77,7 @@ public class InsertData extends ActionSupport{
 		
 		try {
 			userMgr.createAddress(ad1);
-		} catch (OmException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		

@@ -111,14 +111,4 @@ public class UserManagerImpl implements UserManager{
 		addressDao.update(address);
 	}
 	
-	public String createUser(User user) throws OmException {
-		
-		userDao.save(user);
-		if (user.getUuid().length() > 0) {
-			return user.getUuid();
-		}
-		return null;
-	}
-
-	
 }
