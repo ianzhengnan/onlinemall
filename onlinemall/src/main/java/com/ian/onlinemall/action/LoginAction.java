@@ -10,8 +10,6 @@ public class LoginAction extends BaseAction{
 	private static final long serialVersionUID = 1L;
 
 	private User user;
-	
-	private String tip;
 
 	public User getUser() {
 		return user;
@@ -21,26 +19,18 @@ public class LoginAction extends BaseAction{
 		this.user = user;
 	}
 
-	public String getTip() {
-		return tip;
-	}
-
-	public void setTip(String tip) {
-		this.tip = tip;
-	}
-	
 	@Override
 	public String execute() throws Exception{
 		
-		if (getUser().getName().equalsIgnoreCase("ian") 
-				&& getUser().getPassword().equals("kaka")) {
+		User user = getUser();
+		
+		if (user != null && userMgr.signInByName(user.getName(), user.getPassword()) != null) {
 			setTip("登录成功！");
 			return SUCCESS;
 		}else{
-			setTip("登录失败！用户名或密码不正确");
+			setTip("登录失败！");
 			return ERROR;
 		}
-		
 	}
 	
 }
