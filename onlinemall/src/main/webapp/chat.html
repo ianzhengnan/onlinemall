@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>使用Web Socket通讯</title>
+<script>
+	var webSocket = new WebSocket("ws://localhost:8080/onlinemall/websocket/chat");
+	var sendMsg = function(){
+		var inputElement = document.getElementById('msg');
+		webSocket.send(inputElement.value);
+		inputElement.value = "";
+	};
+	var send = function(event){
+		if(event.which == 13){
+			sendMsg();
+		}
+	};
+	webSocket.onopen = function(){
+		webSocket.onmessage = function(event){
+			var show = document.getElementById('show');
+			show.innerHTML += event.data + "<br/>";
+			show.scrollTop = show.scrollHeight;
+		};
+		document.getElementById('msg').onkeydown = send;
+		document.getElementById('sendBn').onclick = sendMsg;
+	};
+	webSocket.onclose = function(){
+		document.getElementById('msg').onkeydown = null;
+		document.getElementById('sendBn').onclick = null;
+		console.log('WebSocket已经被关闭');
+	};
+	
+</script>
+</head>
+<body>
+<div style="width:600px;height:240px;overflow-y:auto;border:1px solid: #333;" id="show"></div>
+<input type="text" size="80" id="msg" name="msg" placeholder="请输入聊天内容......">
+<input type="button" value="发送" id="sendBn" name="sendBn">
+</body>
+</html>
