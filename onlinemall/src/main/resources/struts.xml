@@ -8,6 +8,23 @@
 	<constant name="struts.devMode" value="true"/>
 	<constant name="struts.action.excludePattern" value="/websocket/.*,ws://.*"/>
 	
+	<constant name="struts.action.extension" value="xhtml,,xml,json,action"/>
+	
+	<constant name="struts.convention.action.suffix" value="Controller"/>
+	<constant name="struts.convention.action.mapAllMatches" value="true"/>
+	<!-- <constant name="struts.convention.default.parent.package" value="rest-default"/> -->
+	<constant name="struts.convention.default.parent.package" value="rest-showcase"/>
+	<constant name="struts.convention.package.locators" value="controller"/>
+	
+	<constant name="struts.mapper.class" value="org.apache.struts2.dispatcher.mapper.PrefixBasedActionMapper"/>
+	<constant name="struts.mapper.prefixMapping" value="/api:rest,:struts"/>
+	
+	<!-- <constant name="struts.rest.namespace" value="/api" /> -->
+	<!-- 下面的重定义是必须的，namespace必须有，且要放在这里。 不然non-rest, rest不能共存 -->
+	<package name="rest-showcase" namespace="/api" extends="rest-default">
+		<global-allowed-methods>index, show, create, update, destroy, delete, deleteConfirm, edit, editNew</global-allowed-methods>
+	</package>
+	
 	<package name="ian" extends="struts-default" strict-method-invocation="false">
 		<action name="loginAction" class="com.ian.onlinemall.action.LoginAction">
 			<result name="success">/WEB-INF/content/index.jsp</result>
