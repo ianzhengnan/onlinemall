@@ -29,9 +29,9 @@ public class InsertData extends ActionSupport{
 		
 		logger = LoggerFactory.getLogger(InsertData.class);
 		
-		insertUser("王五2", "wangwu");
+		insertUser("王五1", "wangwu");
 		
-		User userTmp = userMgr.signInByName("王五2", "wangwu");
+		User userTmp = userMgr.signInByName("王五1", "wangwu");
 
 		logger.debug("debug message: " + userTmp );
 		logger.info("info message: " + userTmp );

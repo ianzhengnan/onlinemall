@@ -4,6 +4,8 @@
 	"http://struts.apache.org/dtds/struts-2.5.dtd">
 	
 <struts>
+	<bean type="org.apache.struts2.rest.handler.ContentTypeHandler" name="jackson" class="org.apache.struts2.rest.handler.JacksonLibHandler"/>
+	
 	<constant name="struts.i18n.encoding" value="utf-8"/>
 	<constant name="struts.devMode" value="true"/>
 	<constant name="struts.action.excludePattern" value="/websocket/.*,ws://.*"/>
@@ -19,10 +21,17 @@
 	<constant name="struts.mapper.class" value="org.apache.struts2.dispatcher.mapper.PrefixBasedActionMapper"/>
 	<constant name="struts.mapper.prefixMapping" value="/api:rest,:struts"/>
 	
+	<constant name="struts.rest.handlerOverride.json" value="jackson"/>
+ 
+	<!-- Set to false if the json content can be returned for any kind of http method -->
+	<constant name="struts.rest.content.restrictToGET" value="false"/>
+	
 	<!-- <constant name="struts.rest.namespace" value="/api" /> -->
 	<!-- 下面的重定义是必须的，namespace必须有，且要放在这里。 不然non-rest, rest不能共存 -->
 	<package name="rest-showcase" namespace="/api" extends="rest-default">
-		<global-allowed-methods>index, show, create, update, destroy, delete, deleteConfirm, edit, editNew</global-allowed-methods>
+		<global-allowed-methods>index, show, create, update, destroy, delete, deleteConfirm, checkUser, edit, editNew</global-allowed-methods>
+		
+		
 	</package>
 	
 	<package name="ian" extends="struts-default" strict-method-invocation="false">
