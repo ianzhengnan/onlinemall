@@ -25,13 +25,18 @@
  
 	<!-- Set to false if the json content can be returned for any kind of http method -->
 	<constant name="struts.rest.content.restrictToGET" value="false"/>
+		<!-- <constant name="struts.mapper.postMethodName" value="checkUser"/> -->
 	
 	<!-- <constant name="struts.rest.namespace" value="/api" /> -->
 	<!-- 下面的重定义是必须的，namespace必须有，且要放在这里。 不然non-rest, rest不能共存 -->
 	<package name="rest-showcase" namespace="/api" extends="rest-default">
-		<global-allowed-methods>index, show, create, update, destroy, delete, deleteConfirm, checkUser, edit, editNew</global-allowed-methods>
+		<global-allowed-methods>index, show, create, update, destroy, delete, deleteConfirm, edit, editNew</global-allowed-methods>
 		
-		
+		<action name="signin" class="com.ian.onlinemall.action.SignInAction">
+			<result name="index">/WEB-INF/content/test/index.jsp</result>
+			<result name="success">/WEB-INF/content/test/welcome.jsp</result>
+			<result name="error">/WEB-INF/content/test/error.jsp</result>
+		</action>
 	</package>
 	
 	<package name="ian" extends="struts-default" strict-method-invocation="false">
