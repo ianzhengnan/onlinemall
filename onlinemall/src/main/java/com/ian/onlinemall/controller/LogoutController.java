@@ -26,6 +26,8 @@ public class LogoutController extends BaseController implements ServletRequestAw
 		return logout();
 	}
 	
+	
+	
 	public String logout(){
 //		ActionContext atx = ActionContext.getContext();
 //		atx.getSession().remove("loginUser");
@@ -37,6 +39,7 @@ public class LogoutController extends BaseController implements ServletRequestAw
 				cookie.setMaxAge(0);
 			}
 		}
+		
 		return "success";
 	}
 

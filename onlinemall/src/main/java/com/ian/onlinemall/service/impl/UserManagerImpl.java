@@ -43,7 +43,7 @@ public class UserManagerImpl implements UserManager{
 	public boolean signUp(User user) throws OmException {
 		
 		userDao.save(user);
-		if (user.getUuid().length() > 0) {
+		if (user.getCreatedAt() != null) {
 			return true;
 		}
 		return false;
@@ -67,7 +67,7 @@ public class UserManagerImpl implements UserManager{
 	public String createOrder(Order order) throws OmException {
 		
 		orderDao.save(order);
-		if (order.getUuid().length() > 0) {
+		if (order.getCreatedAt() != null) {
 			return order.getNumber();
 		}
 		return null;
@@ -96,7 +96,7 @@ public class UserManagerImpl implements UserManager{
 
 	public boolean createAddress(Address address) throws OmException {
 		addressDao.save(address);
-		if (address.getUuid().length() > 0) {
+		if (address.getCreatedAt() != null) {
 			return true;
 		}
 		return false;

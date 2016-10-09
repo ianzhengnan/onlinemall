@@ -26,9 +26,6 @@ import com.opensymphony.xwork2.ModelDriven;
 })
 public class LoginController extends BaseController implements ModelDriven<User>, ServletResponseAware, ServletRequestAware{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -6475078107590624578L;
 	private User user;
 //	private Map<String, Object> userId = new HashMap<String, Object>();

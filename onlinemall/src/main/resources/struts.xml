@@ -25,7 +25,6 @@
  
 	<!-- Set to false if the json content can be returned for any kind of http method -->
 	<constant name="struts.rest.content.restrictToGET" value="false"/>
-		<!-- <constant name="struts.mapper.postMethodName" value="checkUser"/> -->
 	
 	<!-- <constant name="struts.rest.namespace" value="/api" /> -->
 	<!-- 下面的重定义是必须的，namespace必须有，且要放在这里。 不然non-rest, rest不能共存 -->
