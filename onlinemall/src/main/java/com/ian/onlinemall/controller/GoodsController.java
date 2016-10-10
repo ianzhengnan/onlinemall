@@ -1,0 +1,85 @@
+package com.ian.onlinemall.controller;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.struts2.convention.annotation.AllowedMethods;
+import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.convention.annotation.Results;
+
+import com.ian.onlinemall.domain.Goods;
+import com.ian.onlinemall.service.UserManager;
+import com.opensymphony.xwork2.ModelDriven;
+
+
+@Results({
+	@Result(name = "index", location = "/WEB-INF/content/goods/index.jsp"),
+	@Result(name = "catalog", location = "/WEB-INF/content/goods/catalog.jsp")
+})
+@AllowedMethods({"index","show"})
+public class GoodsController extends BaseController implements ModelDriven<Object>{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1959812886370334219L;
+	
+	private Goods goods;
+	private List<Goods> items = new ArrayList<Goods>();
+	private String catalog;
+	private UserManager userMgr;
+	
+	// GET /goods
+	public String index(){
+		items = userMgr.getAllGoods(0, 100);
+		LOG.info("Customer visit index page.");
+		return "index";
+	}
+	
+	// GET /goods/catalog
+	public String show() throws UnsupportedEncodingException{
+		URLDecoder.decode(this.catalog, "utf-8");
+		items = userMgr.getGoodsByCatalog(this.catalog);
+		LOG.info("Customer visit catalog page.");
+		return "catalog";
+	}
+	
+	
+	public Object getModel() {
+		return (items != null ? items : goods);
+	}
+
+	public Goods getGoods() {
+		return goods;
+	}
+
+	public void setGoods(Goods goods) {
+		this.goods = goods;
+	}
+
+	public List<Goods> getItems() {
+		return items;
+	}
+
+	public void setItems(List<Goods> items) {
+		this.items = items;
+	}
+
+	public String getCatalog() {
+		return catalog;
+	}
+
+	public void setCatalog(String catalog) {
+		this.catalog = catalog;
+	}
+
+	public void setUserMgr(UserManager userMgr) {
+		this.userMgr = userMgr;
+	}
+
+
+
+	
+}

@@ -28,21 +28,7 @@ public class SignupController extends BaseController implements ModelDriven<User
 	private User user;
 	private UserManager userMgr;
 	
-	public UserManager getUserMgr() {
-		return userMgr;
-	}
-
-	public void setUserMgr(UserManager userMgr) {
-		this.userMgr = userMgr;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+	
 
 	// GET /api/signup
 	public String index(){
@@ -76,6 +62,21 @@ public class SignupController extends BaseController implements ModelDriven<User
 		return user;
 	}
 	
-	
+	// getters and setters
+	public UserManager getUserMgr() {
+		return userMgr;
+	}
+
+	public void setUserMgr(UserManager userMgr) {
+		this.userMgr = userMgr;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 	
 }

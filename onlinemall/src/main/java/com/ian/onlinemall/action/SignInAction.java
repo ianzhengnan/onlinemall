@@ -10,6 +10,10 @@ import com.opensymphony.xwork2.ModelDriven;
 
 public class SignInAction extends BaseController implements ModelDriven<User>{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7136050973987529059L;
 	private User user;
 
 	public User getUser() {

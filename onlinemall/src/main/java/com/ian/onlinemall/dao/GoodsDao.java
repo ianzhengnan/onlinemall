@@ -34,4 +34,10 @@ public interface GoodsDao extends Dao {
 	 * @return 找到的商品列表
 	 */
 	List<Goods> findItemByBrand(String brand);
+	
+	/**
+	 * 获取所有的商品
+	 * @return
+	 */
+	List<Goods> findAllItems(int first, int max);
 }

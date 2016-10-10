@@ -37,6 +37,7 @@
 		<property name="addressDao" ref="addressDao"/>
 		<property name="CartDao" ref="cartDao"/>
 		<property name="orderDao" ref="orderDao"/>
+		<property name="goodsDao" ref="goodsDao"/>
 	</bean>
 	
 	<bean id="transManager" class="org.springframework.orm.jpa.JpaTransactionManager">

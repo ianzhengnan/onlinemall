@@ -49,6 +49,11 @@
 			<result name="error">/WEB-INF/content/test/error.jsp</result>
 		</action>
 		
+		<action name="insertgoods" class="com.ian.onlinemall.test.InsertGoods">
+			<result name="success">/WEB-INF/content/test/status.jsp</result>
+			<result name="error">/WEB-INF/content/test/status.jsp</result>
+		</action>
+		
 		<action name="*">
 			<result>/WEB-INF/content/{1}.jsp</result>
 		</action>

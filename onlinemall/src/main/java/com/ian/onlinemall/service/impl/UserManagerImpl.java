@@ -1,11 +1,13 @@
 package com.ian.onlinemall.service.impl;
 
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ian.onlinemall.dao.AddressDao;
 import com.ian.onlinemall.dao.CartDao;
+import com.ian.onlinemall.dao.GoodsDao;
 import com.ian.onlinemall.dao.OrderDao;
 import com.ian.onlinemall.dao.UserDao;
 import com.ian.onlinemall.domain.Address;
@@ -23,6 +25,7 @@ public class UserManagerImpl implements UserManager{
 	private OrderDao orderDao;
 	private CartDao cartDao;
 	private AddressDao addressDao;
+	private GoodsDao goodsDao;
 	
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
@@ -38,6 +41,10 @@ public class UserManagerImpl implements UserManager{
 
 	public void setAddressDao(AddressDao addressDao) {
 		this.addressDao = addressDao;
+	}
+
+	public void setGoodsDao(GoodsDao goodsDao) {
+		this.goodsDao = goodsDao;
 	}
 
 	public boolean signUp(User user) throws OmException {
@@ -110,5 +117,27 @@ public class UserManagerImpl implements UserManager{
 		address.setDefault(true);
 		addressDao.update(address);
 	}
+
+	public List<Goods> getGoodsByCatalog(String catalog) {
+		return goodsDao.findItemByCategroy(catalog);
+	}
+
+	public List<Goods> getAllGoods(int first, int max) {
+		return goodsDao.findAllItems(first, max);
+	}
+
+	public List<Goods> getGoodsByBrand(String brand) {
+		return goodsDao.findItemByBrand(brand);
+	}
+
+	public boolean createGoods(Goods goods) throws OmException {
+		goodsDao.save(goods);
+		if (goods.getCreatedAt() != null) {
+			return true;
+		}
+		return false;
+	}
+
+
 	
 }

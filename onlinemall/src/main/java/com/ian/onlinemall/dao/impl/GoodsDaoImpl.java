@@ -52,4 +52,13 @@ public class GoodsDaoImpl extends BaseDao implements GoodsDao{
 		return null;
 	}
 
+	public List<Goods> findAllItems(int first, int max) {
+		Object[] arg = null;
+		List<Goods> goods = getResultList(Goods.class, "", first, max, null, arg);
+		if (goods != null && goods.size() > 0) {
+			return goods;
+		}
+		return null;
+	}
+
 }

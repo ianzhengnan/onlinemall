@@ -1,5 +1,6 @@
 package com.ian.onlinemall.service;
 
+import java.util.List;
 import java.util.Set;
 
 
@@ -102,5 +103,31 @@ public interface UserManager {
 	 */
 	void setDefaultAddress(Address address) throws OmException;
 	
+	/**
+	 * 按照商品类别获取商品
+	 * @param catalog
+	 * @return
+	 */
+	List<Goods> getGoodsByCatalog(String catalog);
 	
+	/**
+	 * 获取所有的商品
+	 * @return
+	 */
+	List<Goods> getAllGoods(int first,int max);
+	
+	/**
+	 * 根据商标获取商品
+	 * @param brand
+	 * @return
+	 */
+	List<Goods> getGoodsByBrand(String brand);
+	
+	/**
+	 * 添加商品
+	 * @param goods
+	 * @return
+	 * @throws OmException
+	 */
+	boolean createGoods(Goods goods) throws OmException;
 }

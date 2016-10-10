@@ -35,9 +35,7 @@ public class BaseDao implements Dao{
 	public void save(Object entity){
 
 		try{
-//			em.getTransaction().begin();
 			em.persist(entity);
-//			em.getTransaction().commit();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -78,8 +76,10 @@ public class BaseDao implements Dao{
 		Query query = em.createQuery("select o from " + entityName
 				+ " as o " + whereJpql + buildOrderBy(orderBy));
 		
-		for (int i = 0; i < args.length; i++) {
-			query.setParameter(i+1, args[i]);
+		if(args != null){
+			for (int i = 0; i < args.length; i++) {
+				query.setParameter(i+1, args[i]);
+			}
 		}
 		
 		query.setFirstResult(firstResult).setMaxResults(maxResult);
