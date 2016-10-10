@@ -30,6 +30,7 @@ public class GoodsController extends BaseController implements ModelDriven<Objec
 	private List<Goods> items = new ArrayList<Goods>();
 	private String catalog;
 	private UserManager userMgr;
+	private String id;
 	
 	// GET /goods
 	public String index(){
@@ -40,8 +41,8 @@ public class GoodsController extends BaseController implements ModelDriven<Objec
 	
 	// GET /goods/catalog
 	public String show() throws UnsupportedEncodingException{
-		URLDecoder.decode(this.catalog, "utf-8");
-		items = userMgr.getGoodsByCatalog(this.catalog);
+		URLDecoder.decode(id, "utf-8");
+		items = userMgr.getGoodsByCatalog(this.id);
 		LOG.info("Customer visit catalog page.");
 		return "catalog";
 	}
@@ -77,6 +78,14 @@ public class GoodsController extends BaseController implements ModelDriven<Objec
 
 	public void setUserMgr(UserManager userMgr) {
 		this.userMgr = userMgr;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 

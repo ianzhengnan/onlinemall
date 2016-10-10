@@ -9,8 +9,9 @@
 
 <script>
 	function goToCatalog(catalog) {
-		val xmlHttp = new XMLHttpRequest();
-		xmlHttp.open("GET", "goods/"+catalog, true);
+		var cat = encodeURI(catalog);
+		var xmlHttp = new XMLHttpRequest();
+		xmlHttp.open("GET", "goods/"+cat, true);
 		xmlHttp.send();
 	}
 
@@ -32,7 +33,7 @@
 		<tr>
 			<td><s:property value="number"/></td>
 			<td><s:property value="name"/></td>
-			<td><a href="javascript:goToCatalog(${catalog});"><s:property value="category"/></a></td>
+			<td><a href="goods/<s:property value="category"/>"><s:property value="category"/></a></td>
 			<td><s:property value="brand"/></td>
 			<td><s:property value="price"/></td>
 			<td><s:property value="stock"/></td>
