@@ -14,6 +14,32 @@
 		xmlHttp.open("GET", "goods/"+cat, true);
 		xmlHttp.send();
 	}
+	
+	function onFistPagePressed(){
+		window.location = "?page=0";
+	}
+	
+	function onPreviousPressed(page){
+		var pg = parseInt(page) - 1;
+		if (pg < 0) {
+			pg = 0;
+		}
+		window.location = "?page="+pg;
+	}
+	
+	function onNextPressed(page){
+		var pg = parseInt(page) + 1;
+		if (pg > ${totalPage} - 1) {
+			pg = ${totalPage} - 1;
+		}
+		window.location = "?page="+pg;
+	}
+	
+	function onLastPagePressed(){
+		
+		var pg = ${totalPage} - 1;
+		window.location = "?page="+pg;
+	}
 
 </script>
 
@@ -40,6 +66,12 @@
 			<td><s:property value="unit"/></td>
 		</tr>
 	</s:iterator>
+	<tr>
+		<td><button onclick="onFistPagePressed()">首页</button></td>
+		<td><button onclick="onPreviousPressed('${page}')">上一页</button></td>
+		<td><button onclick="onNextPressed('${page}')">下一页</button></td>
+		<td><button onclick="onLastPagePressed()">最后</button></td>
+	</tr>
 </table>
 
 </body>

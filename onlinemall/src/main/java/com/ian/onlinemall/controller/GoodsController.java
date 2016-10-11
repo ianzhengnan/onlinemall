@@ -31,11 +31,14 @@ public class GoodsController extends BaseController implements ModelDriven<Objec
 	private String catalog;
 	private UserManager userMgr;
 	private String id;
+	private final static int pageSize = 5;
+	private static int page;
+	private int totalPage;
 	
 	// GET /goods
 	public String index(){
-		items = userMgr.getAllGoods(0, 100);
-		LOG.info("Customer visit index page.");
+		int offset = getPage() * pageSize;
+		items = userMgr.getAllGoods(offset + 1, pageSize);
 		return "index";
 	}
 	
@@ -43,7 +46,6 @@ public class GoodsController extends BaseController implements ModelDriven<Objec
 	public String show() throws UnsupportedEncodingException{
 		URLDecoder.decode(id, "utf-8");
 		items = userMgr.getGoodsByCatalog(this.id);
-		LOG.info("Customer visit catalog page.");
 		return "catalog";
 	}
 	
@@ -87,8 +89,38 @@ public class GoodsController extends BaseController implements ModelDriven<Objec
 	public void setId(String id) {
 		this.id = id;
 	}
-
-
-
 	
+	public UserManager getUserMgr() {
+		return userMgr;
+	}
+
+	public int getPageSize() {
+		return pageSize;
+	}
+
+	/**
+	 * 读取当前Page number
+	 * @return
+	 */
+	public int getPage() {
+		return page;
+	}
+	/**
+	 * 设置当前page number
+	 * @param page
+	 */
+	@SuppressWarnings("static-access")
+	public void setPage(int page) {
+		if (page < 0) {
+			this.page = 0;
+		}else if(page > totalPage){
+			this.page = totalPage;
+		}
+		this.page = page;
+	}
+
+	public int getTotalPage() {
+		return userMgr.getAllGoods(0, 1000).size() / pageSize;
+	}
+
 }
