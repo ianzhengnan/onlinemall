@@ -81,8 +81,9 @@ public class BaseDao implements Dao{
 				query.setParameter(i+1, args[i]);
 			}
 		}
-		
-		query.setFirstResult(firstResult).setMaxResults(maxResult);
+		if (maxResult != 0) {
+			query.setFirstResult(firstResult).setMaxResults(maxResult);
+		}
 		
 		return (List<T>)query.getResultList();
 	}
