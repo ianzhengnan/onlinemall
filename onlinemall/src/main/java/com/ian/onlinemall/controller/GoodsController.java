@@ -120,6 +120,7 @@ public class GoodsController extends BaseController implements ModelDriven<Objec
 	}
 
 	public int getTotalPage() {
+		LOG.error("test");
 		return userMgr.getAllGoods(0, 0).size() / pageSize;
 	}
 
