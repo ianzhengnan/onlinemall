@@ -16,7 +16,7 @@ import org.apache.struts2.rest.HttpHeaders;
 
 import com.ian.onlinemall.domain.User;
 import com.ian.onlinemall.exception.OmException;
-//import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 
 @Results({
@@ -30,7 +30,7 @@ public class LoginController extends BaseController implements ModelDriven<User>
 	private User user;
 //	private Map<String, Object> userId = new HashMap<String, Object>();
 	private User loginUser;
-//	private ActionContext act;
+	private ActionContext act;
 	private HttpServletResponse response;
 	private HttpServletRequest request;
 
@@ -50,7 +50,7 @@ public class LoginController extends BaseController implements ModelDriven<User>
 			setTip("您已经登陆！");
 			user = new User();
 			user.setName(request.getCookies()[0].getValue());
-			
+
 //			user = (User) act.getSession().get("loginUser");
 			return new DefaultHttpHeaders("success")
 					.disableCaching();
@@ -82,12 +82,18 @@ public class LoginController extends BaseController implements ModelDriven<User>
 			Cookie cookie = new Cookie("loginUsername", user.getName());
 			cookie.setMaxAge(60 * 60);
 			response.addCookie(cookie);
+			saveCartToSession(loginUser);
 			
 			return "success";
 		}else{
 			setTip("登录失败！");
 			return "error";
 		}
+	}
+	
+	private void saveCartToSession(User user){
+		act = ActionContext.getContext();
+		act.getSession().put("cart", userMgr.getCartByUser(user));
 	}
 
 	public User getModel() {

@@ -39,6 +39,12 @@
 	</package>
 	
 	<package name="ian" extends="struts-default" strict-method-invocation="false">
+		<action name="cartAction" class="com.ian.onlinemall.action.CartAction">
+			<result name="success">/WEB-INF/content/cart/index.jsp</result>
+			<result name="input">/WEB-INF/content/cart/index.jsp</result>
+		</action>
+	
+	
 		<action name="loginAction" class="com.ian.onlinemall.action.LoginAction">
 			<result name="success">/WEB-INF/content/index.jsp</result>
 			<result name="error">login.jsp</result>

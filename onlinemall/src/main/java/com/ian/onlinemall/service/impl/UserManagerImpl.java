@@ -1,7 +1,6 @@
 package com.ian.onlinemall.service.impl;
 
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -80,19 +79,14 @@ public class UserManagerImpl implements UserManager{
 		return null;
 	}
 
-	
-	public Set<Goods> addGoodsToCart(Goods goods, Cart cart) throws OmException {
-
+	public void addGoodsToCart(Goods goods, Cart cart) throws OmException {
 		cartDao.addGoodsToCart(goods, cart);
-		return cart.getGoods();
 	}
 
-	public Set<Goods> removeGoodsFromCart(Goods goods, Cart cart) throws OmException {
-
+	public void removeGoodsFromCart(Goods goods, Cart cart) throws OmException {
 		cartDao.removeGoodsFromCart(goods, cart);
-		return cart.getGoods();
 	}
-
+	
 	public boolean cleanCart(Cart cart) throws OmException {
 		cartDao.cleanCart(cart);
 		if (cart.getGoods().isEmpty() == true) {
@@ -138,6 +132,21 @@ public class UserManagerImpl implements UserManager{
 		return false;
 	}
 
+	public boolean creatCart(Cart cart) throws OmException {
+		cartDao.save(cart);
+		if (cart.getCreatedAt() != null) {
+			return true;
+		}
+		return false;
+	}
+
+	public Cart getCartByUser(User user) {
+		return cartDao.findCartByUser(user);
+	}
+
+	public Goods getGoodsById(String id) {
+		return goodsDao.getGoodsById(id);
+	}
 
 	
 }

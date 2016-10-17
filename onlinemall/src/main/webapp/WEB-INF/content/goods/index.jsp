@@ -74,5 +74,12 @@
 	</tr>
 </table>
 
+<%-- <s:form method="get" action="../cartAction">
+	<s:hidden name="goods" value="xxxx"/>
+	<s:submit value="test" />
+</s:form> --%>
+
+<a href="../cartAction?id=${items[0].uuid}&method=add">test</a>
+
 </body>
 </html>

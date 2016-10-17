@@ -40,4 +40,11 @@ public interface GoodsDao extends Dao {
 	 * @return
 	 */
 	List<Goods> findAllItems(int first, int max);
+	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	Goods getGoodsById(String id);
 }

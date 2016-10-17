@@ -8,6 +8,7 @@ import org.apache.struts2.convention.annotation.Results;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 
+import com.ian.onlinemall.domain.Cart;
 import com.ian.onlinemall.domain.User;
 import com.ian.onlinemall.exception.OmException;
 import com.ian.onlinemall.service.UserManager;
@@ -26,10 +27,7 @@ public class SignupController extends BaseController implements ModelDriven<User
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 	private User user;
-	private UserManager userMgr;
 	
-	
-
 	// GET /api/signup
 	public String index(){
 		return "index";
@@ -41,6 +39,7 @@ public class SignupController extends BaseController implements ModelDriven<User
 		User person = getUser();
 		
 		if(userMgr.signUp(person)){
+			createCart(person);
 			setTip("注册成功！");
 			return "index";
 		}else{
@@ -49,6 +48,11 @@ public class SignupController extends BaseController implements ModelDriven<User
 		}
 	}
 	
+	private void createCart(User user) throws OmException{
+		Cart cart = new Cart();
+		cart.setUser(user);
+		userMgr.creatCart(cart);
+	}
 	
 	public void setServletResponse(HttpServletResponse httpServletResponse) {
 		this.response = httpServletResponse;
@@ -62,15 +66,7 @@ public class SignupController extends BaseController implements ModelDriven<User
 		return user;
 	}
 	
-	// getters and setters
-	public UserManager getUserMgr() {
-		return userMgr;
-	}
-
-	public void setUserMgr(UserManager userMgr) {
-		this.userMgr = userMgr;
-	}
-
+	// getters and setter
 	public User getUser() {
 		return user;
 	}

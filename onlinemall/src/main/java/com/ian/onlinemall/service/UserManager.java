@@ -1,8 +1,6 @@
 package com.ian.onlinemall.service;
 
 import java.util.List;
-import java.util.Set;
-
 
 import com.ian.onlinemall.domain.Address;
 import com.ian.onlinemall.domain.Cart;
@@ -63,7 +61,7 @@ public interface UserManager {
 	 * @return 是否成功
 	 * @throws OmException
 	 */
-	Set<Goods> addGoodsToCart(Goods goods, Cart cart) throws OmException;
+	void addGoodsToCart(Goods goods, Cart cart) throws OmException;
 	
 	/**
 	 * 从购物车删除商品
@@ -71,7 +69,7 @@ public interface UserManager {
 	 * @return 是否成功
 	 * @throws OmException
 	 */
-	Set<Goods> removeGoodsFromCart(Goods goods, Cart cart) throws OmException;
+	void removeGoodsFromCart(Goods goods, Cart cart) throws OmException;
 	
 	/**
 	 * 清空购物车
@@ -130,4 +128,26 @@ public interface UserManager {
 	 * @throws OmException
 	 */
 	boolean createGoods(Goods goods) throws OmException;
+	
+	/**
+	 * 创建购物车
+	 * @param cart
+	 * @return
+	 * @throws OmException
+	 */
+	boolean creatCart(Cart cart) throws OmException;
+	
+	/**
+	 * 获取指定用户的购物车
+	 * @param user
+	 * @return
+	 */
+	Cart getCartByUser(User user);
+	
+	/**
+	 * 获取Goods
+	 * @param id
+	 * @return
+	 */
+	Goods getGoodsById(String id);
 }

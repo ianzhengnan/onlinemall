@@ -61,4 +61,8 @@ public class GoodsDaoImpl extends BaseDao implements GoodsDao{
 		return null;
 	}
 
+	public Goods getGoodsById(String id) {
+		return get(Goods.class, id);
+	}
+
 }

@@ -1,8 +1,8 @@
 package com.ian.onlinemall.domain;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +30,7 @@ public class Cart extends BaseObject implements Serializable{
 	
 	@OneToMany(targetEntity=Goods.class)
 	@JoinColumn(name="goods_id", nullable=true)
-	private Set<Goods> goods = new HashSet<Goods>();
+	private List<Goods> goods = new ArrayList<Goods>();
 	
 	private Integer quantity;
 	
@@ -54,20 +54,20 @@ public class Cart extends BaseObject implements Serializable{
 		this.user = user;
 	}
 
-	public Set<Goods> getGoods() {
-		return goods;
-	}
-
-	public void setGoods(Set<Goods> goods) {
-		this.goods = goods;
-	}
-
 	public Integer getQuantity() {
 		return quantity;
 	}
 
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
+	}
+
+	public List<Goods> getGoods() {
+		return goods;
+	}
+
+	public void setGoods(List<Goods> goods) {
+		this.goods = goods;
 	}
 
 	

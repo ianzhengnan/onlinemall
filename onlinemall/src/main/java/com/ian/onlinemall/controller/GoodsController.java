@@ -111,6 +111,7 @@ public class GoodsController extends BaseController implements ModelDriven<Objec
 	 */
 	@SuppressWarnings("static-access")
 	public void setPage(int page) {
+		LOG.error("set page");
 		if (page < 0) {
 			this.page = 0;
 		}else if(page > totalPage){
@@ -120,7 +121,7 @@ public class GoodsController extends BaseController implements ModelDriven<Objec
 	}
 
 	public int getTotalPage() {
-		LOG.error("test");
+		LOG.error("get total page");
 		return userMgr.getAllGoods(0, 0).size() / pageSize;
 	}
 
