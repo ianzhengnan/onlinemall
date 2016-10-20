@@ -80,6 +80,8 @@
 </s:form> --%>
 
 <a href="../cartAction?id=${items[0].uuid}&method=add">test</a>
+<br/>
+<a href="${pageContext.request.contextPath}/api/logout">登出</a>
 
 </body>
 </html>

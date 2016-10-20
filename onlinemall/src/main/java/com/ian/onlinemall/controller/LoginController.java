@@ -20,7 +20,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 
 @Results({
-	@Result(name="success", location="/WEB-INF/content/test/welcome.jsp"),
+	@Result(name="success", location = "/WEB-INF/content/test/welcome.jsp"),
 	@Result(name="error", location="/WEB-INF/content/test/error.jsp"),
 	@Result(name="index", location="/WEB-INF/content/test/login.jsp")
 })
@@ -28,7 +28,6 @@ public class LoginController extends BaseController implements ModelDriven<User>
 
 	private static final long serialVersionUID = -6475078107590624578L;
 	private User user;
-//	private Map<String, Object> userId = new HashMap<String, Object>();
 	private User loginUser;
 	private ActionContext act;
 	private HttpServletResponse response;
@@ -44,18 +43,12 @@ public class LoginController extends BaseController implements ModelDriven<User>
 	
 	// GET /login
 	public HttpHeaders index(){
-//		act = ActionContext.getContext();
 		String key = request.getCookies()[0].getName();
 		if(key != null && key == "loginUsername"){
 			setTip("您已经登陆！");
-			user = new User();
-			user.setName(request.getCookies()[0].getValue());
-
-//			user = (User) act.getSession().get("loginUser");
 			return new DefaultHttpHeaders("success")
 					.disableCaching();
 		}else{
-			user = new User();
 			return new DefaultHttpHeaders("index")
 					.disableCaching();
 		}
@@ -70,15 +63,12 @@ public class LoginController extends BaseController implements ModelDriven<User>
 	public String checkUser() throws OmException{
 		
 		User user = getUser();
-//		act = ActionContext.getContext();
-				
+		
 		loginUser = userMgr.signInByName(user.getName(), user.getPassword());
 		
 		if (user != null && loginUser != null) {
 			setTip("登录成功！");
-//			userId.put("loginUser", loginUser);
-//			act.getSession().put("loginUser", loginUser);
-			
+
 			Cookie cookie = new Cookie("loginUsername", user.getName());
 			cookie.setMaxAge(60 * 60);
 			response.addCookie(cookie);

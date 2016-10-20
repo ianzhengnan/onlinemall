@@ -6,11 +6,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>插入成功</title>
+<script>
+    function redirectToGoods(){
+        window.location = "goods";
+    }
+</script>
+
 </head>
-<body>
-<s:property value="tip"/><br/>
-<s:property value="user.name"/>
+<body onload="redirectToGoods()">
+<%--<s:property value="tip"/><br/>
+<s:property value="user.name"/>--%>
 <br/>
-<a href="${pageContext.request.contextPath}/api/logout">登出</a>
+<!--<a href="${pageContext.request.contextPath}/api/logout">登出</a>-->
 </body>
 </html>

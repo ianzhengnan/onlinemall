@@ -4,11 +4,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -28,8 +30,8 @@ public class Cart extends BaseObject implements Serializable{
 	@JoinColumn(name="user_uuid", nullable=false, updatable=false)
 	private User user;
 	
-	@OneToMany(targetEntity=Goods.class)
-	@JoinColumn(name="goods_id", nullable=true)
+	@ManyToMany(targetEntity=Goods.class,fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//	@JoinColumn(name="goods_id", nullable=true)
 	private List<Goods> goods = new ArrayList<Goods>();
 	
 	private Integer quantity;

@@ -5,7 +5,7 @@
   <artifactId>onlinemall</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>onlinemall Maven Webapp</name>
+  <name>onlinemall</name>
   <url>http://maven.apache.org</url>
   <dependencies>
 	  	<dependency>
