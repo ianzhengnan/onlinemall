@@ -27,4 +27,5 @@ public interface UserDao extends Dao{
 	 * @return 指定用户名，密码的用户
 	 */
 	User findUserByTelAndPass(String tel, String password);
+
 }

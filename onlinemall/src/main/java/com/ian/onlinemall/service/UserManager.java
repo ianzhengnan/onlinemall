@@ -150,4 +150,11 @@ public interface UserManager {
 	 * @return
 	 */
 	Goods getGoodsById(String id);
+
+	/**
+	 * 获取用户
+	 * @param id
+	 * @return
+	 */
+	User getUserById(String id);
 }

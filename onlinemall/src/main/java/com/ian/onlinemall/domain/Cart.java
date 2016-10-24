@@ -2,7 +2,9 @@ package com.ian.onlinemall.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -30,11 +32,9 @@ public class Cart extends BaseObject implements Serializable{
 	@JoinColumn(name="user_uuid", nullable=false, updatable=false)
 	private User user;
 	
-	@ManyToMany(targetEntity=Goods.class,fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToMany(targetEntity=Goods.class,fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH})
 //	@JoinColumn(name="goods_id", nullable=true)
 	private List<Goods> goods = new ArrayList<Goods>();
-	
-	private Integer quantity;
 	
 	public Cart(){
 		
@@ -56,14 +56,6 @@ public class Cart extends BaseObject implements Serializable{
 		this.user = user;
 	}
 
-	public Integer getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
-
 	public List<Goods> getGoods() {
 		return goods;
 	}
@@ -72,5 +64,17 @@ public class Cart extends BaseObject implements Serializable{
 		this.goods = goods;
 	}
 
-	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Cart)) return false;
+
+		Cart cart = (Cart) o;
+		return cart.getUuid().equals(this.getUuid());
+	}
+
+	@Override
+	public int hashCode() {
+		return getUuid() != null ? getUuid().hashCode() : 0;
+	}
 }

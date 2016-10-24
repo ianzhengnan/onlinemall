@@ -111,6 +111,30 @@ public class Goods extends BaseObject implements Serializable{
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
-	
-	
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Goods)) return false;
+
+		Goods goods = (Goods) o;
+
+		return goods.getName().equals(this.getName()) && goods.getBrand().equals(this.getBrand())
+				&& goods.getCategory().equals(this.getCategory());
+
+	}
+
+	@Override
+	public int hashCode() {
+		int result;
+		long temp;
+		result = getNumber() != null ? getNumber().hashCode() : 0;
+		result = 31 * result + (getName() != null ? getName().hashCode() : 0);
+		result = 31 * result + (getCategory() != null ? getCategory().hashCode() : 0);
+		result = 31 * result + (getBrand() != null ? getBrand().hashCode() : 0);
+		result = 31 * result + (getDescription() != null ? getDescription().hashCode() : 0);
+		temp = Double.doubleToLongBits(getPrice());
+		result = 31 * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
 }

@@ -54,6 +54,7 @@
 <th>商品单价</th>
 <th>商品库存</th>
 <th>商品单位</th>
+<th>添加到购物车</th>
 </tr>
 	<s:iterator value="items">
 		<tr>
@@ -64,6 +65,7 @@
 			<td><s:property value="price"/></td>
 			<td><s:property value="stock"/></td>
 			<td><s:property value="unit"/></td>
+			<td><a href="../cartAction?id=<s:property value='uuid'/>&method=add">添加</a></td>
 		</tr>
 	</s:iterator>
 	<tr>
@@ -82,6 +84,7 @@
 <a href="../cartAction?id=${items[0].uuid}&method=add">test</a>
 <br/>
 <a href="${pageContext.request.contextPath}/api/logout">登出</a>
-
+<br/>
+<a href="../cartAction">购物车</a>
 </body>
 </html>

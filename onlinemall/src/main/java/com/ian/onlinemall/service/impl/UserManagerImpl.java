@@ -148,5 +148,9 @@ public class UserManagerImpl implements UserManager{
 		return goodsDao.getGoodsById(id);
 	}
 
-	
+	public User getUserById(String id) {
+		return userDao.get(User.class, id);
+	}
+
+
 }

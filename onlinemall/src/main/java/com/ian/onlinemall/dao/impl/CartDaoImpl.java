@@ -24,14 +24,12 @@ public class CartDaoImpl extends BaseDao implements CartDao{
 	public void addGoodsToCart(Goods goods, Cart cart) {
 		List<Goods> items = cart.getGoods();
 		items.add(goods);
-		cart.setQuantity(items.size());
 		update(cart);
 	}
 
 	public void removeGoodsFromCart(Goods goods, Cart cart) {
 		List<Goods> items = cart.getGoods();
 		items.remove(goods);
-		cart.setQuantity(items.size());
 		update(cart);
 	}
 
@@ -39,5 +37,5 @@ public class CartDaoImpl extends BaseDao implements CartDao{
 		cart.getGoods().clear();
 		update(cart);
 	}
-	
+
 }

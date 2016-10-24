@@ -4,6 +4,9 @@ import com.ian.onlinemall.domain.Cart;
 import com.ian.onlinemall.domain.Goods;
 import com.ian.onlinemall.domain.User;
 
+import java.util.List;
+import java.util.Set;
+
 public interface CartDao extends Dao {
 
 	/**
@@ -32,4 +35,5 @@ public interface CartDao extends Dao {
 	 * @param cart
 	 */
 	void cleanCart(Cart cart);
+
 }

@@ -44,8 +44,10 @@ public class LoginController extends BaseController implements ModelDriven<User>
 	// GET /login
 	public HttpHeaders index(){
 		String key = request.getCookies()[0].getName();
-		if(key != null && key == "loginUsername"){
+		if(key != null && key.equals("loginUsername")){
 			setTip("您已经登陆！");
+			loginUser = userMgr.getUserById(request.getCookies()[0].getValue());
+			saveCartToSession(loginUser);
 			return new DefaultHttpHeaders("success")
 					.disableCaching();
 		}else{
@@ -69,7 +71,7 @@ public class LoginController extends BaseController implements ModelDriven<User>
 		if (user != null && loginUser != null) {
 			setTip("登录成功！");
 
-			Cookie cookie = new Cookie("loginUsername", user.getName());
+			Cookie cookie = new Cookie("loginUsername", loginUser.getUuid());
 			cookie.setMaxAge(60 * 60);
 			response.addCookie(cookie);
 			saveCartToSession(loginUser);
