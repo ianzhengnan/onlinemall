@@ -11,6 +11,7 @@ import com.ian.onlinemall.exception.OmException;
 import com.opensymphony.xwork2.ActionContext;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -79,6 +80,7 @@ public class CartAction extends BaseAction implements ServletRequestAware{
 				disItems.add(cartData);
 			}
 		}
+		Collections.sort(disItems);
 	}
 
 	public Goods getGoods() {

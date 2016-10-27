@@ -1,9 +1,12 @@
 package com.ian.onlinemall.domain;
 
+
+import java.sql.Timestamp;
+
 /**
  * Created by I076453 on 10/24/2016.
  */
-public class CartData {
+public class CartData implements Comparable<CartData>{
 
     private Goods goods;
     private Cart cart;
@@ -57,5 +60,13 @@ public class CartData {
         int result = getGoods() != null ? getGoods().hashCode() : 0;
         result = 31 * result + (getCart() != null ? getCart().hashCode() : 0);
         return result;
+    }
+
+    public int compareTo(CartData o) {
+        if((this.goods.getName().length() - o.getGoods().getName().length()) == 0){
+            return 0;
+        }else{
+            return this.goods.getName().length() - o.getGoods().getName().length();
+        }
     }
 }

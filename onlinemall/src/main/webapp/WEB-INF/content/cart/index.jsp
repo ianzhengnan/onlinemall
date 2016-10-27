@@ -12,11 +12,14 @@
 <table border="1">
     <th>商品名称</th>
     <th>商品数量</th>
+    <th colspan="2">操作</th>
 
 <s:iterator value="disItems">
     <tr>
         <td><s:property value="goods.name"/></td>
         <td><s:property value="quantity"/></td>
+        <td><a href="/cartAction?id=<s:property value='goods.uuid'/>&method=add">增加</a></td>
+        <td><a href="/cartAction?id=<s:property value='goods.uuid'/>&method=remove">减少</a></td>
     </tr>
 </s:iterator>
 </table>
