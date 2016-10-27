@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 	
-	<bean id="baseDao" abstract="true" lazy-init="true" p:emf-ref="emf" />
+	<bean id="baseDao" abstract="true" lazy-init="true"/>
 	
 	<bean id="userDao" class="com.ian.onlinemall.dao.impl.UserDaoImpl" parent="baseDao"/>
 	<bean id="orderDao" class="com.ian.onlinemall.dao.impl.OrderDaoImpl" parent="baseDao"/>
