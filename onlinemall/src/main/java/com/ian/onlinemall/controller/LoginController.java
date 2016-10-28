@@ -74,11 +74,12 @@ public class LoginController extends BaseController implements ModelDriven<User>
 		
 		loginUser = userMgr.signInByName(user.getName(), user.getPassword());
 		
-		if (user != null && loginUser != null) {
+		if (loginUser != null) {
 			setTip("登录成功！");
 
 			Cookie cookie = new Cookie("loginUsername", loginUser.getUuid());
 			cookie.setMaxAge(60 * 60);
+			cookie.setPath("/");
 			response.addCookie(cookie);
 			saveCartToSession(loginUser);
 			

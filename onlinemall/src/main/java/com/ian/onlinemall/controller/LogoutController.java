@@ -40,6 +40,7 @@ public class LogoutController extends BaseController implements ServletRequestAw
 		for (Cookie cookie : request.getCookies()) {
 			if (cookie.getName().equals("loginUsername")) {
 				Cookie cie = new Cookie("loginUsername", "");
+				cie.setPath("/");
 				cie.setMaxAge(0);
 				response.addCookie(cie);
 				break;

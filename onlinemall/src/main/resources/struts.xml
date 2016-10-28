@@ -37,11 +37,25 @@
 			<result name="error">/WEB-INF/content/test/error.jsp</result>
 		</action>
 	</package>
-	
+
 	<package name="ian" extends="struts-default" strict-method-invocation="false">
+
+
+		<interceptors>
+			<interceptor name="test" class="com.ian.onlinemall.interceptors.AuthInterceptor"/>
+		</interceptors>
+
+		<!--<default-interceptor-ref name="defaultStack"/>-->
+
 		<action name="cartAction" class="com.ian.onlinemall.action.CartAction">
 			<result name="success">/WEB-INF/content/cart/index.jsp</result>
 			<result name="input">/WEB-INF/content/cart/index.jsp</result>
+			<result name="login" type="redirectAction">
+				<param name="actionName">login</param>
+				<param name="namespace">/api</param>
+			</result>
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="test"/>
 		</action>
 	
 	
