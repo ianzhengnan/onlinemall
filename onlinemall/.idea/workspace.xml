@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="16def47e-c482-4fab-be41-9b2fe870ecdd" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/ian/onlinemall/interceptors/AuthInterceptor.java" afterPath="$PROJECT_DIR$/src/main/java/com/ian/onlinemall/interceptors/AuthInterceptor.java" />
     </list>
     <ignored path="onlinemall.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -79,8 +78,8 @@
       <file leaf-file-name="AuthInterceptor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ian/onlinemall/interceptors/AuthInterceptor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+            <state relative-caret-position="731">
+              <caret line="43" column="9" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1483,7 +1482,7 @@
       <workItem from="1477553617056" duration="8190000" />
       <workItem from="1477562774059" duration="1370000" />
       <workItem from="1477564309100" duration="6624000" />
-      <workItem from="1477632429302" duration="10572000" />
+      <workItem from="1477632429302" duration="10687000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1477564807833</created>
@@ -1499,7 +1498,14 @@
       <option name="project" value="LOCAL" />
       <updated>1477641993918</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="update interceptor">
+      <created>1477643788111</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1477643788111</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1508,7 +1514,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50908000" />
+    <option name="totallyTimeSpent" value="51023000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1589,7 +1595,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="update interceptor" />
+    <option name="LAST_COMMIT_MESSAGE" value="update interceptor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2032,8 +2039,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ian/onlinemall/interceptors/AuthInterceptor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        <state relative-caret-position="731">
+          <caret line="43" column="9" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
