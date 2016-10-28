@@ -26,8 +26,6 @@ public class AuthInterceptor implements Interceptor{
     public String intercept(ActionInvocation actionInvocation) throws Exception {
 
 //        ActionContext atx = actionInvocation.getInvocationContext();
-
-
         request = ServletActionContext.getRequest();
         Cookie cie = null;
         for (Cookie cookie: request.getCookies()) {
