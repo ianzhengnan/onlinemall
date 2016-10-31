@@ -35,10 +35,8 @@ public class AuthInterceptor implements Interceptor{
         }
 
         if (cie == null){
-            System.out.println("error...");;
             return Action.LOGIN;
         }else{
-            System.out.println("success...");;
             return actionInvocation.invoke();
         }
     }
