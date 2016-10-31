@@ -25,9 +25,6 @@ public class AuthInterceptor implements Interceptor{
 
     public String intercept(ActionInvocation actionInvocation) throws Exception {
 
-//        ActionContext atx = actionInvocation.getInvocationContext();
-
-
         request = ServletActionContext.getRequest();
         Cookie cie = null;
         for (Cookie cookie: request.getCookies()) {
@@ -38,8 +35,10 @@ public class AuthInterceptor implements Interceptor{
         }
 
         if (cie == null){
+            System.out.println("error...");;
             return Action.LOGIN;
         }else{
+            System.out.println("success...");;
             return actionInvocation.invoke();
         }
     }

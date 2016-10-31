@@ -3,10 +3,13 @@ package com.ian.onlinemall.controller;
 //import java.util.HashMap;
 //import java.util.Map;
 
+import javax.interceptor.Interceptor;
+import javax.interceptor.Interceptors;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.struts2.convention.annotation.InterceptorRef;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.apache.struts2.interceptor.ServletRequestAware;

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.struts2.convention.annotation.AllowedMethods;
+import org.apache.struts2.convention.annotation.InterceptorRef;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 
@@ -16,9 +17,11 @@ import com.opensymphony.xwork2.ModelDriven;
 
 @Results({
 	@Result(name = "index", location = "/WEB-INF/content/goods/index.jsp"),
-	@Result(name = "catalog", location = "/WEB-INF/content/goods/catalog.jsp")
+	@Result(name = "catalog", location = "/WEB-INF/content/goods/catalog.jsp"),
+	@Result(name="login", type="redirectAction", params = {"actionName" , "login"})
 })
 @AllowedMethods({"index","show"})
+@InterceptorRef(value = "auth-stack")
 public class GoodsController extends BaseController implements ModelDriven<Object>{
 
 	/**
