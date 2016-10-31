@@ -23,7 +23,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 
 @Results({
-	@Result(name="success", location = "/WEB-INF/content/test/welcome.jsp"),
+	@Result(name="success", type="redirectAction", params = {"actionName" , "goods"}),
 	@Result(name="error", location="/WEB-INF/content/test/error.jsp"),
 	@Result(name="index", location="/WEB-INF/content/test/login.jsp")
 })
